@@ -19,13 +19,13 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
   --sh:0 10px 34px rgba(37,99,235,.14);--sh-sm:0 2px 10px rgba(15,28,58,.06);
 }
 /* ============ TOP（左標題 + 右輪播）============ */
-.site-header{position:relative;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#eef4ff 55%,#dfeaff 100%);padding:24px 24px 26px}
+.site-header{position:relative;overflow:hidden;background:linear-gradient(180deg,#e7eeff 0%,#f4f8ff 100%);padding:24px 24px 26px}
 .sh-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(37,99,235,.13) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);pointer-events:none}
 .sh-blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.45;pointer-events:none}
 .sh-b1{width:300px;height:300px;background:rgba(96,165,250,.45);top:-130px;right:-40px}
 .sh-b2{width:220px;height:220px;background:rgba(6,182,212,.30);bottom:-120px;left:-40px}
 .top-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;gap:22px;align-items:start}
-@media(min-width:880px){.top-inner{grid-template-columns:2fr 3fr;gap:32px}}
+@media(min-width:880px){.top-inner{grid-template-columns:1fr 1fr;gap:32px}}
 .intro{text-align:left;padding-top:4px}
 .intro-desc{font-size:14px;color:var(--muted);line-height:1.85;max-width:500px;margin-top:14px}
 .intro-feats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
@@ -38,11 +38,11 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 .sh-title .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .sh-sub{font-size:clamp(.95rem,2vw,1.1rem);font-weight:500;color:var(--muted);line-height:1.7;max-width:440px}
 /* ---- Hero 輪播（緊湊卡片）---- */
-.hero{min-width:0}
+.hero{min-width:0;align-self:center}
 .hero-slide{display:none}
 .hero-slide.active{display:flex;flex-direction:row;animation:hfade .4s ease;background:var(--card);border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh)}
 @keyframes hfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.hero-img{position:relative;width:44%;flex-shrink:0;overflow:hidden;background:var(--bg2)}
+.hero-img{position:relative;width:54%;flex-shrink:0;overflow:hidden;background:var(--bg2)}
 @media(max-width:560px){.hero-slide.active{flex-direction:column}.hero-img{width:100%;aspect-ratio:16/9}}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .hero-slide.active:hover .hero-img img{transform:scale(1.03)}
@@ -52,7 +52,7 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 .hero-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:18px 22px}
 .hero-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
 .hero-cat{font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--rpill);background:var(--bg2);color:var(--blue-d)}
-.hero-ttl{font-size:clamp(1.05rem,1.7vw,1.28rem);font-weight:900;color:var(--ink);line-height:1.42;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hero-ttl{font-size:clamp(1.05rem,1.7vw,1.28rem);font-weight:900;color:var(--ink);line-height:1.42;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .hero-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}
 .hero-author{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;min-width:0}
 .hero-author span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -69,12 +69,12 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 .hero-arrow:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .hero-arrow svg{width:14px;height:14px}
 /* ============ CONTROL BAR ============ */
-.ctrl-bar{background:#fff;border-bottom:1px solid var(--border)}
+.ctrl-bar{background:transparent}
 .ctrl-inner{max-width:1200px;margin:0 auto;padding:13px 20px;display:flex;flex-direction:column;gap:11px}
 .search-wrap{position:relative;width:100%}
 .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--hint);pointer-events:none}
 .s-icon svg{width:16px;height:16px}
-#searchInput{width:100%;padding:11px 14px 11px 40px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--rpill);font-family:inherit;font-size:13.5px;color:var(--text);outline:none;transition:all .2s}
+#searchInput{width:100%;padding:11px 14px 11px 40px;background:#fff;border:1.5px solid var(--border);border-radius:var(--rpill);font-family:inherit;font-size:13.5px;color:var(--text);outline:none;transition:all .2s}
 #searchInput::placeholder{color:var(--hint)}
 #searchInput:focus{background:#fff;border-color:var(--blue-l);box-shadow:0 0 0 4px rgba(59,130,246,.12)}
 .filters{display:flex;flex-direction:column;gap:9px}
@@ -330,8 +330,6 @@ function buildHero(feat){
     const hi=!!a.image;
     const imgH=hi?'<img src="'+a.image+'" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">':'';
     const phS=hi?'display:none':'';
-    const cats=[...(a.cat2||[]),...(a.cat1||[])].slice(0,3);
-    const catsH=cats.map(t=>'<span class="hero-cat">'+t+'</span>').join('');
     const beh=typeBehavior(a);
     s.innerHTML=(
       '<div class="hero-img">'+imgH
@@ -339,7 +337,6 @@ function buildHero(feat){
       +'<span class="hero-badge">'+SVG_STAR+'編輯精選</span>'
       +'</div>'
       +'<div class="hero-body">'
-      +(catsH?'<div class="hero-cats">'+catsH+'</div>':'')
       +'<div class="hero-ttl">'+a.title+'</div>'
       +'<div class="hero-foot">'
       +'<div class="hero-author"><div class="hero-avatar"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" style="width:13px;height:13px"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>'
