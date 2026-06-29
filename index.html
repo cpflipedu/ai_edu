@@ -25,7 +25,7 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 .sh-b1{width:300px;height:300px;background:rgba(96,165,250,.45);top:-130px;right:-40px}
 .sh-b2{width:220px;height:220px;background:rgba(6,182,212,.30);bottom:-120px;left:-40px}
 .top-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;gap:22px;align-items:start}
-@media(min-width:880px){.top-inner{grid-template-columns:1.7fr 1fr;gap:46px}}
+@media(min-width:880px){.top-inner{grid-template-columns:2fr 3fr;gap:32px}}
 .intro{text-align:left;padding-top:4px}
 .intro-desc{font-size:14px;color:var(--muted);line-height:1.85;max-width:500px;margin-top:14px}
 .intro-feats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
@@ -40,15 +40,16 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
 /* ---- Hero 輪播（緊湊卡片）---- */
 .hero{min-width:0}
 .hero-slide{display:none}
-.hero-slide.active{display:block;animation:hfade .4s ease;background:var(--card);border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh)}
+.hero-slide.active{display:flex;flex-direction:row;animation:hfade .4s ease;background:var(--card);border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh)}
 @keyframes hfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.hero-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg2)}
+.hero-img{position:relative;width:44%;flex-shrink:0;overflow:hidden;background:var(--bg2)}
+@media(max-width:560px){.hero-slide.active{flex-direction:column}.hero-img{width:100%;aspect-ratio:16/9}}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
 .hero-slide.active:hover .hero-img img{transform:scale(1.03)}
 .hero-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;background:var(--grad)}
 .hero-badge{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:rgba(255,255,255,.96);color:var(--blue-d);font-size:11px;font-weight:700;padding:5px 12px;border-radius:var(--rpill);z-index:2;box-shadow:var(--sh-sm)}
 .hero-badge svg{width:12px;height:12px;flex-shrink:0}
-.hero-body{padding:15px 18px 16px}
+.hero-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:18px 22px}
 .hero-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
 .hero-cat{font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--rpill);background:var(--bg2);color:var(--blue-d)}
 .hero-ttl{font-size:clamp(1.05rem,1.7vw,1.28rem);font-weight:900;color:var(--ink);line-height:1.42;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -161,7 +162,6 @@ footer strong{color:rgba(255,255,255,.85)}
       <h1 class="sh-title"><span class="grad">AI</span> 教育應用精選資源庫</h1>
       <p class="sh-sub">從備課、評量到班級經營，精選教學現場用得上的 AI 工具與實戰案例。</p>
       <p class="intro-desc">這裡彙整《翻轉教育》站上與 AI 相關的文章、教學資源、課程與活動，依情境、工具、年段、科目分門別類。無論你想找現成的提示詞與範本、參考其他老師的實戰案例，或掌握最新的 AI 教育趨勢，用上方搜尋或下方篩選，就能快速找到適合自己課堂的內容。</p>
-      <div class="intro-feats"><span>多維度篩選</span><span>工具分類</span><span>即時搜尋</span></div>
     </div>
     <div class="hero" id="hero">
       <div class="hero-label">最新熱門推薦</div>
@@ -192,7 +192,7 @@ footer strong{color:rgba(255,255,255,.85)}
       <div class="filter-row"><span class="filter-label">工具</span><div class="chips" id="rowCat1"></div></div>
       <div class="filter-row"><span class="filter-label">年段</span><div class="chips" id="rowCat3"></div></div>
       <div class="filter-row"><span class="filter-label">科目</span><div class="chips" id="rowCat4"></div></div>
-      <p class="filter-hint">可複選，若沒有看到想選的可保留「全部」或直接於上方輸入搜尋。</p>
+      <p class="filter-hint">可複選，若沒有看到想選的可保留「不限」或直接於上方輸入搜尋。</p>
     </div>
   </div>
 </div>
@@ -213,7 +213,7 @@ footer strong{color:rgba(255,255,255,.85)}
    =================================================================== */
 
 // ① 部署好 Apps Script 後，把網址貼到這裡（一定要以 https://script.google.com 開頭）
-const APPS_SCRIPT_URL='請貼上你的_Apps_Script_部署網址';
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzGZLbwCp0jLFScO_vzb14sZ5hpcBAAx3E97WOp4zwwUwYiCh98RQWrACJNpdZ2GcNz/exec';
 
 const PER_PAGE=12;
 let DATA=[],page=1,searchQ='';
@@ -294,7 +294,7 @@ function buildFilters(){
 function mkAllChip(key,cont){
   const b=document.createElement('button');
   b.className='chip'+(active[key].size===0?' active':'');
-  b.textContent='全部';
+  b.textContent='不限';
   b.onclick=()=>{
     active[key].clear();
     cont.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
@@ -522,36 +522,33 @@ function paint(){
 }
 async function loadData(){
   const CACHE_KEY='ai_edu_cache_v1';
-  const CACHE_TTL=5*60*1000;
 
-  // ① 先顯示 DEMO（瞬間可見）
-  DATA=DEMO;paint();
+  // 讀上一次成功的快取（不論新舊）
+  let cached=null;
+  try{const c=localStorage.getItem(CACHE_KEY);if(c){const o=JSON.parse(c);if(Array.isArray(o.data)&&o.data.length)cached=o;}}catch(e){}
 
-  // ② 讀快取
-  try{
-    const cached=localStorage.getItem(CACHE_KEY);
-    if(cached){
-      const {ts,data}=JSON.parse(cached);
-      if(Date.now()-ts<CACHE_TTL&&Array.isArray(data)&&data.length){DATA=data;paint();}
-    }
-  }catch(e){}
+  // ① 先顯示：有快取就用快取，否則用內嵌預載（瞬間可見）
+  DATA=cached?cached.data:DEMO;
+  paint();
 
-  // ③ 背景抓 Apps Script（網址尚未設定就跳過，維持 DEMO）
+  // ② 背景抓 Apps Script（網址尚未設定就跳過）
   if(!/^https:\/\/script\.google\.com/.test(APPS_SCRIPT_URL)){
-    console.info('尚未設定 APPS_SCRIPT_URL，目前顯示 DEMO 資料。');return;
+    console.info('[資料] 尚未設定 APPS_SCRIPT_URL，目前顯示'+(cached?'快取':'內嵌預載')+'資料。');return;
   }
   try{
     const res=await fetch(APPS_SCRIPT_URL);
     if(!res.ok)throw new Error('HTTP '+res.status);
     const rows=await res.json();
-    if(!Array.isArray(rows)||!rows.length)throw new Error('empty');
+    if(!Array.isArray(rows)||!rows.length)throw new Error('回傳空白（分頁名稱或資料是否正確？）');
     const parsed=parseRows(rows);
-    if(!parsed.length)throw new Error('no valid rows');
+    if(!parsed.length)throw new Error('無有效資料列');
     DATA=parsed;
     try{localStorage.setItem(CACHE_KEY,JSON.stringify({ts:Date.now(),data:DATA}));}catch(e){}
     paint();
+    console.info('[資料] 已更新為 Apps Script 線上資料，共 '+parsed.length+' 筆。');
   }catch(e){
-    console.warn('Apps Script 無法連線，顯示內嵌資料:',e.message);
+    // 抓失敗：沿用目前畫面（快取或預載），不倒退
+    console.warn('[資料] Apps Script 連線失敗，沿用'+(cached?'最後一次快取':'內嵌預載')+'資料：',e.message);
   }
 }
 
