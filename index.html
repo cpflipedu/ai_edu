@@ -19,14 +19,19 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
   --sh:0 10px 34px rgba(37,99,235,.14);--sh-sm:0 2px 10px rgba(15,28,58,.06);
 }
 /* ============ TOP（左標題 + 右輪播）============ */
-.site-header{position:relative;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#eef4ff 55%,#dfeaff 100%);padding:30px 24px 30px}
+.site-header{position:relative;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#eef4ff 55%,#dfeaff 100%);padding:24px 24px 26px}
 .sh-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(37,99,235,.13) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);pointer-events:none}
 .sh-blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.45;pointer-events:none}
 .sh-b1{width:300px;height:300px;background:rgba(96,165,250,.45);top:-130px;right:-40px}
 .sh-b2{width:220px;height:220px;background:rgba(6,182,212,.30);bottom:-120px;left:-40px}
-.top-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;gap:22px;align-items:center}
-@media(min-width:880px){.top-inner{grid-template-columns:0.9fr 1.1fr;gap:42px}}
-.intro{text-align:left}
+.top-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;gap:22px;align-items:start}
+@media(min-width:880px){.top-inner{grid-template-columns:1.7fr 1fr;gap:46px}}
+.intro{text-align:left;padding-top:4px}
+.intro-desc{font-size:14px;color:var(--muted);line-height:1.85;max-width:500px;margin-top:14px}
+.intro-feats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.intro-feats span{font-size:12px;font-weight:600;color:var(--blue-d);background:rgba(37,99,235,.07);border:1px solid rgba(37,99,235,.14);padding:5px 12px;border-radius:var(--rpill)}
+.hero-label{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:900;color:var(--ink);margin-bottom:12px}
+.hero-label::before{content:'';width:18px;height:3px;border-radius:2px;background:var(--grad)}
 .sh-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:2.5px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:14px;padding:5px 14px;border-radius:var(--rpill);background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.16)}
 .sh-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--grad)}
 .sh-title{font-size:clamp(1.85rem,4.4vw,2.65rem);font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:-.01em;margin-bottom:12px}
@@ -155,8 +160,11 @@ footer strong{color:rgba(255,255,255,.85)}
       <span class="sh-eyebrow"><span class="dot"></span>AI Toolkit for Teachers</span>
       <h1 class="sh-title"><span class="grad">AI</span> 教育應用精選資源庫</h1>
       <p class="sh-sub">從備課、評量到班級經營，精選教學現場用得上的 AI 工具與實戰案例。</p>
+      <p class="intro-desc">這裡彙整《翻轉教育》站上與 AI 相關的文章、教學資源、課程與活動，依情境、工具、年段、科目分門別類。無論你想找現成的提示詞與範本、參考其他老師的實戰案例，或掌握最新的 AI 教育趨勢，用上方搜尋或下方篩選，就能快速找到適合自己課堂的內容。</p>
+      <div class="intro-feats"><span>多維度篩選</span><span>工具分類</span><span>即時搜尋</span></div>
     </div>
     <div class="hero" id="hero">
+      <div class="hero-label">最新熱門推薦</div>
       <div id="heroSlides"></div>
       <div class="hero-controls">
         <div class="hero-dots" id="heroDots"></div>
