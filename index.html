@@ -18,52 +18,52 @@ body{font-family:'Noto Sans TC',system-ui,sans-serif;background:var(--bg);color:
   --r16:16px;--r12:12px;--r9:9px;--rpill:100px;
   --sh:0 10px 34px rgba(37,99,235,.14);--sh-sm:0 2px 10px rgba(15,28,58,.06);
 }
-/* ============ HEADER ============ */
-.site-header{position:relative;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#eef4ff 55%,#dfeaff 100%);padding:46px 24px 40px;text-align:center}
-.site-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--grad)}
-.sh-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(37,99,235,.14) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%);mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 70%);pointer-events:none}
-.sh-blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.5;pointer-events:none}
-.sh-b1{width:300px;height:300px;background:rgba(96,165,250,.45);top:-120px;right:-60px}
-.sh-b2{width:240px;height:240px;background:rgba(6,182,212,.32);bottom:-130px;left:-50px}
-.sh-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
-.sh-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:2.5px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:16px;padding:5px 14px;border-radius:var(--rpill);background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.16)}
+/* ============ TOP（左標題 + 右輪播）============ */
+.site-header{position:relative;overflow:hidden;background:linear-gradient(165deg,#ffffff 0%,#eef4ff 55%,#dfeaff 100%);padding:30px 24px 30px}
+.sh-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(37,99,235,.13) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);mask-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent 75%);pointer-events:none}
+.sh-blob{position:absolute;border-radius:50%;filter:blur(46px);opacity:.45;pointer-events:none}
+.sh-b1{width:300px;height:300px;background:rgba(96,165,250,.45);top:-130px;right:-40px}
+.sh-b2{width:220px;height:220px;background:rgba(6,182,212,.30);bottom:-120px;left:-40px}
+.top-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;gap:22px;align-items:center}
+@media(min-width:880px){.top-inner{grid-template-columns:0.9fr 1.1fr;gap:42px}}
+.intro{text-align:left}
+.sh-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:2.5px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:14px;padding:5px 14px;border-radius:var(--rpill);background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.16)}
 .sh-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--grad)}
-.sh-title{font-size:clamp(2rem,5.4vw,3.05rem);font-weight:900;color:var(--ink);line-height:1.22;letter-spacing:-.01em;margin-bottom:12px}
+.sh-title{font-size:clamp(1.85rem,4.4vw,2.65rem);font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:-.01em;margin-bottom:12px}
 .sh-title .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.sh-sub{font-size:clamp(.95rem,2.1vw,1.15rem);font-weight:500;color:var(--muted);line-height:1.7;max-width:560px;margin:0 auto}
-/* ============ HERO ============ */
-.hero-wrap{background:linear-gradient(180deg,#dfeaff 0%,#f4f8ff 100%);padding:30px 0 36px}
-.hero-inner{max-width:1200px;margin:0 auto;padding:0 20px}
-.hero-slide{display:none;animation:hfade .4s ease}
-.hero-slide.active{display:flex;flex-direction:column;background:var(--card);border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh)}
-@media(min-width:640px){.hero-slide.active{flex-direction:row;min-height:296px}}
+.sh-sub{font-size:clamp(.95rem,2vw,1.1rem);font-weight:500;color:var(--muted);line-height:1.7;max-width:440px}
+/* ---- Hero 輪播（緊湊卡片）---- */
+.hero{min-width:0}
+.hero-slide{display:none}
+.hero-slide.active{display:block;animation:hfade .4s ease;background:var(--card);border-radius:var(--r16);overflow:hidden;box-shadow:var(--sh)}
 @keyframes hfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.hero-img{flex-shrink:0;position:relative;overflow:hidden;height:196px}
-@media(min-width:640px){.hero-img{width:50%;height:auto}}
+.hero-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg2)}
 .hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-.hero-slide:hover .hero-img img{transform:scale(1.04)}
-.hero-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:54px;background:var(--grad)}
-.hero-badge{position:absolute;top:13px;left:13px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.95);color:var(--blue-d);font-size:11px;font-weight:700;padding:5px 13px;border-radius:var(--rpill);z-index:2;box-shadow:var(--sh-sm)}
-.hero-body{flex:1;padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
-.hero-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.hero-cat{font-size:11px;font-weight:600;padding:4px 11px;border-radius:var(--rpill);background:var(--bg2);color:var(--blue-d)}
-.hero-ttl{font-size:clamp(1.2rem,2.6vw,1.5rem);font-weight:900;color:var(--ink);line-height:1.42;margin-bottom:10px;letter-spacing:-.01em}
-.hero-summary{font-size:13.5px;color:var(--muted);line-height:1.78;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.hero-foot{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.hero-author{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px}
-.hero-avatar{width:28px;height:28px;border-radius:50%;background:var(--bg2);color:var(--blue);display:flex;align-items:center;justify-content:center}
-.hero-readbtn{display:flex;align-items:center;gap:6px;background:var(--grad);color:#fff;font-size:12.5px;font-weight:700;padding:9px 19px;border-radius:var(--r9);text-decoration:none;transition:filter .2s,transform .2s;flex-shrink:0;box-shadow:0 4px 14px rgba(37,99,235,.32)}
+.hero-slide.active:hover .hero-img img{transform:scale(1.03)}
+.hero-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;background:var(--grad)}
+.hero-badge{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:rgba(255,255,255,.96);color:var(--blue-d);font-size:11px;font-weight:700;padding:5px 12px;border-radius:var(--rpill);z-index:2;box-shadow:var(--sh-sm)}
+.hero-badge svg{width:12px;height:12px;flex-shrink:0}
+.hero-body{padding:15px 18px 16px}
+.hero-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.hero-cat{font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--rpill);background:var(--bg2);color:var(--blue-d)}
+.hero-ttl{font-size:clamp(1.05rem,1.7vw,1.28rem);font-weight:900;color:var(--ink);line-height:1.42;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hero-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px}
+.hero-author{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;min-width:0}
+.hero-author span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hero-avatar{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--bg2);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.hero-readbtn{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:var(--grad);color:#fff;font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:var(--r9);text-decoration:none;transition:filter .2s,transform .2s;flex-shrink:0;box-shadow:0 4px 14px rgba(37,99,235,.30)}
+.hero-readbtn svg{width:14px;height:14px;flex-shrink:0}
 .hero-readbtn:hover{filter:brightness(1.07);transform:translateY(-1px)}
-.hero-controls{display:flex;align-items:center;justify-content:space-between;padding:18px 0 0}
+.hero-controls{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 0 0}
 .hero-dots{display:flex;gap:6px}
 .hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(37,99,235,.22);border:none;cursor:pointer;padding:0;transition:all .22s}
 .hero-dot.active{background:var(--blue);width:24px;border-radius:4px}
 .hero-arrows{display:flex;gap:7px}
-.hero-arrow{width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--blue);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;box-shadow:var(--sh-sm)}
+.hero-arrow{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--blue);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;box-shadow:var(--sh-sm)}
 .hero-arrow:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.hero-arrow svg{width:15px;height:15px}
+.hero-arrow svg{width:14px;height:14px}
 /* ============ CONTROL BAR ============ */
-.ctrl-bar{background:rgba(255,255,255,.92);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);box-shadow:0 4px 18px rgba(15,28,58,.05)}
+.ctrl-bar{background:#fff;border-bottom:1px solid var(--border)}
 .ctrl-inner{max-width:1200px;margin:0 auto;padding:13px 20px;display:flex;flex-direction:column;gap:11px}
 .search-wrap{position:relative;width:100%}
 .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--hint);pointer-events:none}
@@ -150,25 +150,24 @@ footer strong{color:rgba(255,255,255,.85)}
 <header class="site-header">
   <div class="sh-grid"></div>
   <div class="sh-blob sh-b1"></div><div class="sh-blob sh-b2"></div>
-  <div class="sh-inner">
-    <span class="sh-eyebrow"><span class="dot"></span>AI Toolkit for Teachers</span>
-    <h1 class="sh-title"><span class="grad">AI</span> 教育應用精選資源庫</h1>
-    <p class="sh-sub">從備課、評量到班級經營，精選教學現場用得上的 AI 工具與實戰案例。</p>
-  </div>
-</header>
-
-<section class="hero-wrap">
-  <div class="hero-inner">
-    <div id="heroSlides"></div>
-    <div class="hero-controls">
-      <div class="hero-dots" id="heroDots"></div>
-      <div class="hero-arrows">
-        <button class="hero-arrow" id="heroPrev" aria-label="上一則"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg></button>
-        <button class="hero-arrow" id="heroNext" aria-label="下一則"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg></button>
+  <div class="top-inner">
+    <div class="intro">
+      <span class="sh-eyebrow"><span class="dot"></span>AI Toolkit for Teachers</span>
+      <h1 class="sh-title"><span class="grad">AI</span> 教育應用精選資源庫</h1>
+      <p class="sh-sub">從備課、評量到班級經營，精選教學現場用得上的 AI 工具與實戰案例。</p>
+    </div>
+    <div class="hero" id="hero">
+      <div id="heroSlides"></div>
+      <div class="hero-controls">
+        <div class="hero-dots" id="heroDots"></div>
+        <div class="hero-arrows">
+          <button class="hero-arrow" id="heroPrev" aria-label="上一則"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg></button>
+          <button class="hero-arrow" id="heroNext" aria-label="下一則"><svg fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg></button>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</header>
 
 <div class="ctrl-bar">
   <div class="ctrl-inner">
@@ -185,7 +184,7 @@ footer strong{color:rgba(255,255,255,.85)}
       <div class="filter-row"><span class="filter-label">工具</span><div class="chips" id="rowCat1"></div></div>
       <div class="filter-row"><span class="filter-label">年段</span><div class="chips" id="rowCat3"></div></div>
       <div class="filter-row"><span class="filter-label">科目</span><div class="chips" id="rowCat4"></div></div>
-      <p class="filter-hint">分類為常見示例，每排都可同時複選；沒看到想要的工具或科目時，保留「全部」或直接用上方搜尋即可。</p>
+      <p class="filter-hint">可複選，若沒有看到想選的可保留「全部」或直接於上方輸入搜尋。</p>
     </div>
   </div>
 </div>
@@ -206,7 +205,7 @@ footer strong{color:rgba(255,255,255,.85)}
    =================================================================== */
 
 // ① 部署好 Apps Script 後，把網址貼到這裡（一定要以 https://script.google.com 開頭）
-const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbzGZLbwCp0jLFScO_vzb14sZ5hpcBAAx3E97WOp4zwwUwYiCh98RQWrACJNpdZ2GcNz/exec';
+const APPS_SCRIPT_URL='請貼上你的_Apps_Script_部署網址';
 
 const PER_PAGE=12;
 let DATA=[],page=1,searchQ='';
@@ -278,8 +277,8 @@ function buildFilters(){
     cont.innerHTML='';
     const allBtn=mkAllChip(key,cont);
     cont.appendChild(allBtn);
-    const pin=(PIN[key]||[]).filter(v=>set.has(v));
-    const rest=[...set].filter(v=>!(PIN[key]||[]).includes(v)).sort((a,b)=>a.localeCompare(b,'zh-Hant'));
+    const pin=(PIN[key]||[]);
+    const rest=[...set].filter(v=>!pin.includes(v)).sort((a,b)=>a.localeCompare(b,'zh-Hant'));
     [...pin,...rest].forEach(v=>cont.appendChild(mkValChip(v,key,cont,allBtn)));
   });
 }
@@ -313,9 +312,10 @@ function mkValChip(val,key,cont,allBtn){
 /* ---------- Hero 輪播 ---------- */
 function buildHero(feat){
   const sl=document.getElementById('heroSlides'),dt=document.getElementById('heroDots');
+  const hero=document.getElementById('hero');
   sl.innerHTML='';dt.innerHTML='';
-  if(!feat.length){document.querySelector('.hero-wrap').style.display='none';return;}
-  document.querySelector('.hero-wrap').style.display='block';
+  if(!feat.length){if(hero)hero.style.display='none';return;}
+  if(hero)hero.style.display='block';
   feat.forEach((a,i)=>{
     const s=document.createElement('div');
     s.className='hero-slide'+(i===0?' active':'');
@@ -331,11 +331,10 @@ function buildHero(feat){
       +'<span class="hero-badge">'+SVG_STAR+'編輯精選</span>'
       +'</div>'
       +'<div class="hero-body">'
-      +'<div class="hero-cats">'+catsH+'</div>'
+      +(catsH?'<div class="hero-cats">'+catsH+'</div>':'')
       +'<div class="hero-ttl">'+a.title+'</div>'
-      +'<div class="hero-summary">'+a.summary+'</div>'
       +'<div class="hero-foot">'
-      +'<div class="hero-author"><div class="hero-avatar"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>'
+      +'<div class="hero-author"><div class="hero-avatar"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.9" stroke="currentColor" style="width:13px;height:13px"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>'
       +'<span>'+(a.author||'\u2014')+'</span></div>'
       +'<a href="'+a.url+'" target="_blank" rel="noopener noreferrer" class="hero-readbtn">'+beh.btn+' '+beh.icon+'</a>'
       +'</div></div>'
